@@ -24,9 +24,7 @@ pipeline {
 
       stage("Push image") {
         steps {
-          script {
-             pushDocker()
-          }
+          pushDocker()
         }
      }
  }
