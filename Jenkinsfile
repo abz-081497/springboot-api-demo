@@ -10,8 +10,8 @@ pipeline {
     stage('Build') {
       steps {
         script {
-          welcome('Darren')
-          calculator.add(25,25)
+          welcome('Abby')
+          calculator.add(30,70)
           step.build()
         }
       }
@@ -20,9 +20,9 @@ pipeline {
         stage("Build image") {
             steps {
                  script {
-                    calculator.multi(5,5)
+                    calculator.multi(9,9)
                     step.buildNum()
-                    step.buildImage('darrs08')
+                    step.buildImage('abz-081497')
                 }
             }
         }
