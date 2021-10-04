@@ -15,11 +15,9 @@ pipeline {
     }
     
         stage("Build image") {
-            steps {
-                script {
+          steps {
                     declareBuildNum()
                     dockerBuild()
-                }
             }
         }
     
