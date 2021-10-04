@@ -1,4 +1,3 @@
-@Library('shared-library') _
 pipeline {
   agent any
 
@@ -9,20 +8,15 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        script {
-          welcome('Abby')
-          calculator.add(30,70)
-          step.build()
-        }
+        sh 'mvn package'
       }
     }
     
         stage("Build image") {
             steps {
-                 script {
-                    calculator.multi(9,9)
-                    step.buildNum()
-                    step.buildImage('abigael081497')
+                script {
+                    echo "Build image with tag: ${env.BUILD_ID}"
+                    myapp = docker.build("abigael081497/ledger-service:${env.BUILD_ID}", "--build-arg VERSION='${env.BUILD_ID}' .")
                 }
             }
         }
@@ -31,9 +25,13 @@ pipeline {
       stage("Push image") {
         steps {
                 script {
-                      step.pushImage()
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+                            myapp.push("latest")
+                            myapp.push("${env.BUILD_ID}")
                     }
                }
           }
      }
  }
+  
+}
