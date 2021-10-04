@@ -17,7 +17,7 @@ pipeline {
         stage("Build image") {
             steps {
                 script {
-                    echo "Build image with tag: ${env.BUILD_ID}"
+                    declareBuildNum()
                     myapp = docker.build("abigael081497/ledger-service:${env.BUILD_ID}", "--build-arg VERSION=${env.BUILD_ID} .")
                 }
             }
