@@ -22,7 +22,7 @@ pipeline {
                  script {
                     calculator.multi(9,9)
                     step.buildNum()
-                    step.buildImage('abz-081497')
+                    step.buildImage('abigael081497')
                 }
             }
         }
