@@ -1,5 +1,4 @@
 @Library('shared-library') _
-
 pipeline {
   agent any
 
@@ -10,23 +9,31 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        mvnPackage()
+        script {
+          welcome('Abby')
+          calculator.add(30,70)
+          mvnPackage()
+        }
       }
     }
     
         stage("Build image") {
-          steps {
-                    declareBuildNum()
-                    dockerBuild()
+            steps {
+                 script {
+                    calculator.multi(9,9)
+                    step.buildNum()
+                    step.buildImage('abigael081497')
+                }
             }
         }
     
 
       stage("Push image") {
         steps {
-          pushDocker()
+                script {
+                      step.pushImage()
+                    }
+               }
+          }
      }
  }
-    
-}
-}
