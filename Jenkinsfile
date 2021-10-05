@@ -21,8 +21,8 @@ pipeline {
             steps {
                  script {
                     calculator.multi(9,9)
-                    step.buildNum()
-                    step.buildImage('abigael081497')
+                    gv.buildNum()
+                    gv.buildImage('abigael081497')
                 }
             }
         }
@@ -31,7 +31,7 @@ pipeline {
       stage("Push image") {
         steps {
                 script {
-                      step.pushImage()
+                      gv.pushImage()
                     }
                }
           }
