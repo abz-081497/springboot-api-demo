@@ -11,7 +11,7 @@ pipeline {
       steps {
         script {
           welcome('Abby')
-          calculator.add(30,70)
+          calculator.add(12,12)
           mvnPackage()
         }
       }
@@ -20,7 +20,7 @@ pipeline {
         stage("Build image") {
             steps {
                  script {
-                    calculator.multi(9,9)
+                    calculator.multi(4,6)
                     gv.buildNum()
                     gv.buildImage('abigael081497')
                 }
